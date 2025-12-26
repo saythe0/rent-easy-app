@@ -91,3 +91,16 @@ cp .env.example .env
 - `DB_DATABASE=rent_ease`
 - `DB_USERNAME=sail`
 - `DB_PASSWORD=password`
+- 
+## Команда make:admin
+
+Команда создаёт админ-аккаунт.
+
+Запуск:
+- `./vendor/bin/sail artisan make:admin`
+
+Поля и значения по умолчанию (если ничего не вводить):
+- Email: `admin@example.com`
+- Пароль: `admin`
+- ФИО: `Admin`
+- Телефон: `+79124567890`
