@@ -31,6 +31,7 @@ class AdminPanelProvider extends PanelProvider
             ->profile(isSimple: false)
             ->spa()
             ->brandName('Админ панель')
+            ->favicon(asset('logo.svg'))
             ->colors([
                 'primary' => Color::Amber,
             ])
