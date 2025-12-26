@@ -7,8 +7,6 @@ use Filament\Support\Contracts\HasLabel;
 
 enum ProductStatusEnum: string implements HasLabel
 {
-    use HasValues;
-
     case AVAILABLE = 'available';
     case RENTED = 'rented';
 

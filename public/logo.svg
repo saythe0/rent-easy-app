@@ -1,0 +1,7 @@
+<svg width="160" height="48" viewBox="0 0 160 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="2" y="2" width="44" height="44" rx="12" fill="#1F1F1F"/>
+  <path d="M14 16H34V32H14V16Z" fill="#F6F0E6"/>
+  <path d="M20 18H28V30H20V18Z" fill="#FFB26B"/>
+  <circle cx="34" cy="24" r="6" fill="#66C7C2"/>
+  <text x="58" y="30" fill="#1F1F1F" font-family="Space Grotesk, Trebuchet MS, sans-serif" font-size="18" font-weight="600">RentEase</text>
+</svg>

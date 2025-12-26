@@ -1,0 +1,7 @@
+<svg width="640" height="480" viewBox="0 0 640 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="640" height="480" rx="32" fill="#F6F0E6"/>
+  <rect x="120" y="140" width="400" height="200" rx="24" fill="#FFFFFF"/>
+  <path d="M200 300L260 240L320 300L380 220L440 300" stroke="#1F1F1F" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="260" cy="210" r="18" fill="#FFB26B"/>
+  <text x="220" y="360" fill="#1F1F1F" font-family="Space Grotesk, Trebuchet MS, sans-serif" font-size="18" font-weight="600">Нет изображения</text>
+</svg>

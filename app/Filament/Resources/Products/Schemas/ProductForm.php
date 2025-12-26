@@ -41,13 +41,13 @@ class ProductForm
 
                 Select::make('condition')
                     ->options(ProductConditionEnum::class)
-                    ->label('Статус товара')
+                    ->label('Состояние товара')
                     ->native(false)
                     ->required(),
 
                 Select::make('status')
                     ->options(ProductStatusEnum::class)
-                    ->label('Состояние товара')
+                    ->label('Статус товара')
                     ->native(false)
                     ->required(),
 

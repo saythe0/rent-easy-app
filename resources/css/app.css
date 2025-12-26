@@ -1,2 +1,80 @@
 @import "tailwindcss";
 @config "../../tailwind.config.js";
+
+@layer base {
+    :root {
+        --color-sand: #f6f0e6;
+        --color-ink: #1f1f1f;
+        --color-sunset: #ffb26b;
+        --color-lagoon: #66c7c2;
+        --color-rose: #f59cb6;
+        --color-linen: #fffaf3;
+    }
+
+    body {
+        font-family: "Space Grotesk", "Trebuchet MS", sans-serif;
+        background-color: var(--color-sand);
+        color: var(--color-ink);
+    }
+}
+
+@layer utilities {
+    .bg-sand {
+        background-color: var(--color-sand);
+    }
+    .bg-linen {
+        background-color: var(--color-linen);
+    }
+    .bg-ink {
+        background-color: var(--color-ink);
+    }
+    .bg-sunset {
+        background-color: var(--color-sunset);
+    }
+    .bg-lagoon {
+        background-color: var(--color-lagoon);
+    }
+    .text-ink {
+        color: var(--color-ink);
+    }
+    .shadow-soft {
+        box-shadow: 0 20px 60px rgba(27, 27, 27, 0.08);
+    }
+    .glass-panel {
+        background: rgba(255, 255, 255, 0.78);
+        border: 1px solid rgba(31, 31, 31, 0.08);
+        box-shadow: 0 20px 60px rgba(27, 27, 27, 0.08);
+        backdrop-filter: blur(14px);
+    }
+    .text-balance {
+        text-wrap: balance;
+    }
+    .hero-grid {
+        background-image: linear-gradient(rgba(31, 31, 31, 0.08) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(31, 31, 31, 0.08) 1px, transparent 1px);
+        background-size: 32px 32px;
+    }
+    .article-content {
+        color: var(--color-ink);
+        line-height: 1.7;
+    }
+    .article-content h1,
+    .article-content h2,
+    .article-content h3 {
+        margin-top: 1.5rem;
+        margin-bottom: 0.75rem;
+        font-weight: 600;
+    }
+    .article-content p {
+        margin-top: 0.75rem;
+    }
+    .article-content ul,
+    .article-content ol {
+        margin-top: 0.75rem;
+        padding-left: 1.25rem;
+        list-style: disc;
+    }
+    .article-content a {
+        text-decoration: underline;
+    }
+}

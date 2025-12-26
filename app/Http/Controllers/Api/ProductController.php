@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Enums\ProductConditionEnum;
 use App\Enums\ProductStatusEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\ProductIndexRequest;
@@ -38,12 +39,12 @@ class ProductController extends Controller
     public function getFilters(): JsonResponse
     {
         $categories = ProductCategory::all();
-        $statuses = ProductStatusEnum::values();
+        $conditions = ProductConditionEnum::values();
         $priceRange = Product::selectRaw('MIN(price) as min_price, MAX(price) as max_price')->first();
 
         return response()->json([
             'categories' => ProductCategoryResource::collection($categories),
-            'statuses' => $statuses,
+            'conditions' => $conditions,
             'priceRange' => $priceRange,
         ]);
     }

@@ -11,10 +11,15 @@ class ProductResource extends JsonResource
     {
         return [
             'id' => $this->id,
+            'slug' => $this->slug,
             'name' => $this->name,
             'price' => $this->price,
-            'first_image' => $this->first_image,
             'status' => $this->status->getLabel(),
+            'condition' => $this->condition->getLabel(),
+            'description' => $this->description,
+            'brand' => $this->brand,
+            'model' => $this->model,
+            'first_image' => ProductImageResource::make($this->first_image),
             'category' => $this->whenLoaded('category', fn () => ProductCategoryResource::make($this->category)),
             'images' => $this->whenLoaded('images', fn () => ProductImageResource::collection($this->images)),
         ];
