@@ -44,14 +44,26 @@ class ApplicationController extends Controller
 
     public function store(ApplicationStoreRequest $request, Product $product): JsonResponse
     {
-        $applicationList = Application::query()
+        $requestedStartDate = $request->date('rental_start_date')->toDateString();
+        $requestedEndDate = $request->date('rental_end_date')->toDateString();
+
+        $hasDateConflict = Application::query()
             ->where('product_id', $product->id)
             ->where('status', ApplicationStatusEnum::ACTIVE->value)
-            ->latest()
+            ->where(function ($query) use ($requestedStartDate, $requestedEndDate) {
+                $query
+                    ->whereNull('rental_start_date')
+                    ->orWhereNull('rental_end_date')
+                    ->orWhere(function ($query) use ($requestedStartDate, $requestedEndDate) {
+                        $query
+                            ->whereDate('rental_start_date', '<=', $requestedEndDate)
+                            ->whereDate('rental_end_date', '>=', $requestedStartDate);
+                    });
+            })
             ->exists();
 
-        if ($applicationList) {
-            abort(409, 'Товар уже используется в активной заявке');
+        if ($hasDateConflict) {
+            abort(409, 'Товар уже в аренде на выбранные даты');
         }
 
         $application = Application::create([
@@ -59,6 +71,8 @@ class ApplicationController extends Controller
             'product_id' => $product->id,
             'status' => ApplicationStatusEnum::PENDING->value,
             'comment' => $request->input('comment'),
+            'rental_start_date' => $requestedStartDate,
+            'rental_end_date' => $requestedEndDate,
             'manager_note' => null,
             'amount' => $product->price,
             'is_paid' => false,

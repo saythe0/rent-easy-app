@@ -13,6 +13,8 @@ class Application extends Model
         'product_id',
         'status',
         'comment',
+        'rental_start_date',
+        'rental_end_date',
         'manager_note',
         'amount',
         'is_paid',
@@ -24,6 +26,8 @@ class Application extends Model
             'status' => ApplicationStatusEnum::class,
             'is_paid' => 'boolean',
             'amount' => 'decimal:2',
+            'rental_start_date' => 'date',
+            'rental_end_date' => 'date',
         ];
     }
 

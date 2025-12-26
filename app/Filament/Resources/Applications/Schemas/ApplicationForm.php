@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\Applications\Schemas;
 
 use App\Enums\ApplicationStatusEnum;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
@@ -53,6 +54,15 @@ class ApplicationForm
                 Textarea::make('comment')
                     ->label('Комментарий пользователя')
                     ->autosize(),
+
+                DatePicker::make('rental_start_date')
+                    ->label('Дата начала аренды')
+                    ->required(),
+
+                DatePicker::make('rental_end_date')
+                    ->label('Дата окончания аренды')
+                    ->required()
+                    ->rule('after_or_equal:rental_start_date'),
 
                 Textarea::make('manager_note')
                     ->label('Заметки менеджера (видны только в админ панели)')

@@ -10,6 +10,8 @@ class ApplicationStoreRequest extends FormRequest
     {
         return [
             'comment' => ['required', 'string'],
+            'rental_start_date' => ['required', 'date'],
+            'rental_end_date' => ['required', 'date', 'after_or_equal:rental_start_date'],
         ];
     }
 }

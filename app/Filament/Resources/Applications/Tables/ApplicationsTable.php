@@ -43,6 +43,18 @@ class ApplicationsTable
                     ->sortable()
                     ->toggleable(),
 
+                TextColumn::make('rental_start_date')
+                    ->label('Начало аренды')
+                    ->date()
+                    ->sortable()
+                    ->toggleable(),
+
+                TextColumn::make('rental_end_date')
+                    ->label('Окончание аренды')
+                    ->date()
+                    ->sortable()
+                    ->toggleable(),
+
                 TextColumn::make('amount')
                     ->label('Сумма')
                     ->sortable()
