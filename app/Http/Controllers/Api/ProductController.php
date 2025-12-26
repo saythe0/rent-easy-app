@@ -39,12 +39,10 @@ class ProductController extends Controller
     public function getFilters(): JsonResponse
     {
         $categories = ProductCategory::all();
-        $conditions = ProductConditionEnum::values();
         $priceRange = Product::selectRaw('MIN(price) as min_price, MAX(price) as max_price')->first();
 
         return response()->json([
             'categories' => ProductCategoryResource::collection($categories),
-            'conditions' => $conditions,
             'priceRange' => $priceRange,
         ]);
     }

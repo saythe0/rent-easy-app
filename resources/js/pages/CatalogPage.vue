@@ -6,7 +6,7 @@
                 <p class="mt-2 text-sm text-ink/70">Фильтры помогают быстро найти нужную вещь.</p>
             </div>
             <div class="rounded-full bg-white px-5 py-2 text-sm shadow-soft">
-                {{ filteredProducts.length }} товаров
+                {{ products.length }} товаров
             </div>
         </header>
 
@@ -17,11 +17,6 @@
                         v-model="filters.category"
                         label="Категория"
                         :options="categoryOptions"
-                    />
-                    <BaseSelect
-                        v-model="filters.condition"
-                        label="Состояние"
-                        :options="conditionOptions"
                     />
                     <div class="grid gap-4">
                         <BaseInput
@@ -58,7 +53,7 @@
                     {{ error }}
                 </div>
                 <div v-else class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-                    <ProductCard v-for="product in filteredProducts" :key="product.id" :product="product" />
+                    <ProductCard v-for="product in products" :key="product.id" :product="product" />
                 </div>
             </div>
         </section>
@@ -75,32 +70,19 @@ import ProductCard from '@/components/cards/ProductCard.vue'
 
 const filters = ref({
     category: 'all',
-    condition: 'all',
     priceFrom: '',
     priceTo: '',
 })
 
 const categories = ref([])
-const conditions = ref([])
 const priceRange = ref({ min_price: null, max_price: null })
 const products = ref([])
 const loading = ref(false)
 const error = ref('')
 
-const conditionLabelMap = {
-    new: 'Новый',
-    good: 'Хорошее',
-    used: 'Б/у',
-}
-
 const categoryOptions = computed(() => [
     { value: 'all', label: 'Все категории' },
     ...categories.value.map((category) => ({ value: category.id, label: category.name })),
-])
-
-const conditionOptions = computed(() => [
-    { value: 'all', label: 'Любое состояние' },
-    ...conditions.value.map((condition) => ({ value: condition, label: conditionLabelMap[condition] || condition })),
 ])
 
 const pricePlaceholder = computed(() => ({
@@ -108,18 +90,10 @@ const pricePlaceholder = computed(() => ({
     to: priceRange.value.max_price ? `до ${priceRange.value.max_price} ₽` : 'до 0 ₽',
 }))
 
-const filteredProducts = computed(() => {
-    if (filters.value.condition === 'all') return products.value
-
-    const label = conditionLabelMap[filters.value.condition]
-    return products.value.filter((product) => product.condition === label)
-})
-
 const fetchFilters = async () => {
     try {
         const { data } = await http.get('/products/filters')
         categories.value = data?.categories?.data ?? data.categories ?? []
-        conditions.value = data?.conditions ?? []
         priceRange.value = data?.priceRange ?? { min_price: null, max_price: null }
     } catch (err) {
         error.value = 'Не удалось загрузить фильтры.'
@@ -156,7 +130,7 @@ const applyFilters = async () => {
 }
 
 const resetFilters = async () => {
-    filters.value = { category: 'all', condition: 'all', priceFrom: '', priceTo: '' }
+    filters.value = { category: 'all', priceFrom: '', priceTo: '' }
     await fetchProducts()
 }
 
