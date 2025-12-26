@@ -15,7 +15,7 @@
         </div>
         <div class="flex flex-1 flex-col gap-2 p-5">
             <div class="text-lg font-semibold text-ink">{{ product.name }}</div>
-            <div class="text-sm text-ink/70">{{ product.brand }} · {{ product.model }}</div>
+            <div class="text-sm text-ink/70 mt-auto">{{ product.brand }} · {{ product.model }}</div>
             <div class="text-xs uppercase tracking-[0.2em] text-ink/50">{{ product.category?.name }}</div>
             <div class="mt-auto flex items-center justify-between">
                 <div class="text-sm font-semibold">{{ product.price }} ₽/сутки</div>
