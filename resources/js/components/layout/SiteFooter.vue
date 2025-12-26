@@ -3,7 +3,7 @@
         <div class="mx-auto grid w-full max-w-6xl gap-10 px-6 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
             <div class="space-y-4">
                 <div class="flex items-center gap-3">
-                    <img src="/logo.svg" alt="RentEase" class="h-9 w-auto" />
+                    <img src="/logo.svg" alt="RentEase" class="h-9 object-left object-cover aspect-square w-auto" />
                     <div class="text-lg font-semibold">RentEase</div>
                 </div>
                 <p class="text-sm text-ink/70">

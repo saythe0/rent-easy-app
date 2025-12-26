@@ -35,10 +35,12 @@ class ReviewController extends Controller
         $application = Application::query()
             ->where('product_id', $product->id)
             ->where('user_id', $user->id)
+            ->where('status', ApplicationStatusEnum::ACTIVE->value)
+            ->orWhere('status', ApplicationStatusEnum::RETURNED->value)
             ->latest()
-            ->first();
+            ->exists();
 
-        if (!$application || $application->status !== ApplicationStatusEnum::RETURNED) {
+        if (!$application) {
             return response()->json([
                 'message' => 'Оставить отзыв можно только после готовой заявки.',
             ], 403);

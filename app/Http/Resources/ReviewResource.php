@@ -15,6 +15,7 @@ class ReviewResource extends JsonResource
             'text' => $this->comment,
             'date' => $this->created_at?->format('d.m.Y'),
             'user' => $this->whenLoaded('user', fn () => ShortUserResource::make($this->user)),
+            'product' => $this->whenLoaded('product', fn () => ProductResource::make($this->product)),
         ];
     }
 }

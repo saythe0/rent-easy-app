@@ -10,6 +10,8 @@ import PostPage from '@/pages/PostPage.vue'
 import LoginPage from '@/pages/LoginPage.vue'
 import RegisterPage from '@/pages/RegisterPage.vue'
 import AccountPage from '@/pages/AccountPage.vue'
+import AccountReviewsPage from '@/pages/AccountReviewsPage.vue'
+import AccountApplicationsPage from '@/pages/AccountApplicationsPage.vue'
 
 const router = createRouter({
     history: createWebHistory(),
@@ -60,6 +62,18 @@ const router = createRouter({
             path: '/account',
             component: AccountPage,
             name: 'account',
+            meta: { requiresAuth: true },
+        },
+        {
+            path: '/account/reviews',
+            component: AccountReviewsPage,
+            name: 'account.reviews',
+            meta: { requiresAuth: true },
+        },
+        {
+            path: '/account/applications',
+            component: AccountApplicationsPage,
+            name: 'account.applications',
             meta: { requiresAuth: true },
         },
     ],

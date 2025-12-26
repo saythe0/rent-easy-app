@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ApplicationController;
+use App\Http\Controllers\Api\AccountController;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\PostController;
 use App\Http\Controllers\Api\ProductController;
@@ -13,6 +14,8 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/me', [AuthController::class, 'me']);
+    Route::get('/account/applications', [AccountController::class, 'applications']);
+    Route::get('/account/reviews', [AccountController::class, 'reviews']);
 
     Route::prefix('products/{product:slug}/application')
         ->name('products.application')

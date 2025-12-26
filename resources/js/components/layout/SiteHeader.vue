@@ -2,7 +2,7 @@
     <header class="relative z-10 border-b border-ink/10 bg-white/70 backdrop-blur">
         <div class="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-4">
             <RouterLink to="/" class="flex items-center gap-3">
-                <img src="/logo.svg" alt="RentEase" class="h-10 w-auto" />
+                <img src="/logo.svg" alt="RentEase" class="h-10 object-left object-cover aspect-square w-auto" />
                 <div class="leading-tight">
                     <div class="text-lg font-semibold tracking-wide">RentEase</div>
                     <div class="text-xs uppercase tracking-[0.2em] text-ink/60">Аренда с характером</div>

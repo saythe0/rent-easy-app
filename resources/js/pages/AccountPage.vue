@@ -14,6 +14,10 @@
             </button>
         </div>
 
+        <div class="mt-6">
+            <AccountNav />
+        </div>
+
         <div v-if="loading" class="mt-6 text-sm text-ink/60">Загружаем профиль...</div>
         <div v-else-if="user" class="mt-6 grid gap-4 md:grid-cols-2">
             <div class="rounded-2xl bg-linen p-4">
@@ -48,6 +52,7 @@
 import { computed, onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth'
+import AccountNav from '@/components/layout/AccountNav.vue'
 
 const authStore = useAuthStore()
 const router = useRouter()
