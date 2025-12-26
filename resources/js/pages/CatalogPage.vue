@@ -10,7 +10,7 @@
             </div>
         </header>
 
-        <section class="grid gap-8 lg:grid-cols-[280px_1fr]">
+        <section class="grid gap-8 lg:grid-cols-[280px_1fr] items-start">
             <form class="glass-panel rounded-[28px] p-6" @submit.prevent="applyFilters">
                 <div class="space-y-5">
                     <BaseSelect
